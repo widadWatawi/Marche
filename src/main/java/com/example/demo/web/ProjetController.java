@@ -4,6 +4,7 @@ package com.example.demo.web;
 import com.example.demo.Repository.ProjetRepository;
 import com.example.demo.entities.Projet;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -40,6 +41,9 @@ public class ProjetController {
 
     @GetMapping("/cancel/{id}")
     public List<Projet> deleteProjet(@PathVariable Long id){
+        HttpHeaders responseHeaders = new HttpHeaders();
+        responseHeaders.set("Access-Control-Allow-Origin",
+                "http://localhost:4200");
         projetRepository.deleteById(id);
         return projetRepository.findAll();
     }
