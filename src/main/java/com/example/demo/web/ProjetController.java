@@ -5,7 +5,9 @@ import com.example.demo.Repository.ProjetRepository;
 import com.example.demo.entities.Projet;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.view.RedirectView;
 
 import java.util.List;
 import java.util.Optional;
@@ -24,7 +26,11 @@ public class ProjetController {
     public String register(@RequestBody Projet projet){
         projetRepository.save(projet);
         return "saved successfullly";
+    }
 
+    @PutMapping("/projets/update/{projet}")
+    public Projet updateProject(@RequestBody Projet projet){
+        return projetRepository.save(projet);
     }
 
     @GetMapping("/projets")
@@ -39,11 +45,16 @@ public class ProjetController {
 
     }
 
+
+
+    @GetMapping("/projets/search/{name}")
+    public List<Projet> findByName(@PathVariable String name){
+        return projetRepository.getByNom(name);
+
+    }
+
     @GetMapping("/cancel/{id}")
     public List<Projet> deleteProjet(@PathVariable Long id){
-        HttpHeaders responseHeaders = new HttpHeaders();
-        responseHeaders.set("Access-Control-Allow-Origin",
-                "http://localhost:4200");
         projetRepository.deleteById(id);
         return projetRepository.findAll();
     }
