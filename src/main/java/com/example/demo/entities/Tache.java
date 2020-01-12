@@ -13,6 +13,9 @@ public class Tache implements Serializable {
     private Long id;
     private String nom;
     private Date delai;
+    private String Statut;
+
+
 
     @ManyToOne
     private Phase phase;
@@ -58,6 +61,14 @@ public class Tache implements Serializable {
 
     public void setDelai(Date delai) {
         this.delai = delai;
+    }
+
+    public String getStatut() {
+        return Statut;
+    }
+
+    public void setStatut(String statut) {
+        Statut = statut;
     }
 
     public Phase getPhase() {

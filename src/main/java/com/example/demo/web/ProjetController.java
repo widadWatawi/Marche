@@ -67,4 +67,15 @@ public class ProjetController {
         return projetRepository.findAll();
     }
 
+
+    @GetMapping("/valider/{id}")
+    public List<Projet> ValiderProjet(@PathVariable Long id){
+        Projet projet = projetRepository.getById(id);
+        projet.setStatut("Valide");
+        projetRepository.save(projet);
+        return projetRepository.findAll();
+    }
+
+
+
 }

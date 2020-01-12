@@ -48,4 +48,12 @@ public class TacheController {
         return tacheRepository.getByNom(name);
 
     }
+
+    @GetMapping("/tache/valider/{id}")
+    public List<Tache> ValiderPhase(@PathVariable Long id, @RequestParam Long phase_id){
+        Tache tache = tacheRepository.getById(id);
+        tache.setStatut("Accomplie");
+        tacheRepository.save(tache);
+        return phaseRepository.getTache(phase_id);
+    }
 }

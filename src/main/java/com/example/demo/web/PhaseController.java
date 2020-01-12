@@ -56,5 +56,14 @@ public class PhaseController {
     }
 
 
+    @GetMapping("/phase/valider/{id}")
+    public List<Phase> ValiderPhase(@PathVariable Long id, @RequestParam Long project_id){
+        Phase phase = phaseRepository.getById(id);
+        phase.setStatut("Valide");
+        phaseRepository.save(phase);
+        return projetRepository.getPhase(project_id);
+    }
+
+
 
 }
