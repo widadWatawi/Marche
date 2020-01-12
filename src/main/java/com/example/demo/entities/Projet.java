@@ -20,8 +20,7 @@ public class Projet  implements Serializable {
     @ManyToOne
     private Personnel chef;
 
-    @OneToMany(mappedBy="projet")
-    private Collection<Phase> phases ;
+
 
     public Projet() {
     }
@@ -95,13 +94,6 @@ public class Projet  implements Serializable {
         this.chef = chef;
     }
 
-    public Collection<Phase> getPhases() {
-        return phases;
-    }
-
-    public void setPhases(Collection<Phase> phases) {
-        this.phases = phases;
-    }
 
 
 }

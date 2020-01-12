@@ -2,6 +2,7 @@ package com.example.demo.web;
 
 
 import com.example.demo.Repository.ProjetRepository;
+import com.example.demo.entities.Phase;
 import com.example.demo.entities.Projet;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -28,7 +29,7 @@ public class ProjetController {
         return "saved successfullly";
     }
 
-    @PutMapping("/projets/update/{projet}")
+    @PutMapping("/projets/update")
     public Projet updateProject(@RequestBody Projet projet){
         return projetRepository.save(projet);
     }
@@ -50,6 +51,13 @@ public class ProjetController {
     @GetMapping("/projets/search/{name}")
     public List<Projet> findByName(@PathVariable String name){
         return projetRepository.getByNom(name);
+
+    }
+
+
+    @GetMapping("/projets/{id}/phase")
+    public List<Phase> getPhase(@PathVariable Long id){
+        return projetRepository.getPhase(id);
 
     }
 

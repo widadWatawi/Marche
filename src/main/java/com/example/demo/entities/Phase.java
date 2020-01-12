@@ -18,8 +18,7 @@ public class Phase implements Serializable {
     @ManyToOne
     private Projet projet;
 
-    @OneToMany(mappedBy="phase")
-    private Collection<Tache> taches ;
+
 
     public Phase() {
     }
@@ -71,11 +70,5 @@ public class Phase implements Serializable {
         this.projet = projet;
     }
 
-    public Collection<Tache> getTaches() {
-        return taches;
-    }
 
-    public void setTaches(Collection<Tache> taches) {
-        this.taches = taches;
-    }
 }
