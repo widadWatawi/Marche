@@ -32,8 +32,6 @@ public class Personnel implements Serializable {
     @ManyToOne
     private Service service;
 
-    @OneToMany(mappedBy="collaborateur")
-    private Collection<Tache> taches ;
 
 
     public Personnel() {
@@ -201,11 +199,5 @@ public class Personnel implements Serializable {
         this.service = service;
     }
 
-    public Collection<Tache> getTaches() {
-        return taches;
-    }
 
-    public void setTaches(Collection<Tache> taches) {
-        this.taches = taches;
-    }
 }
