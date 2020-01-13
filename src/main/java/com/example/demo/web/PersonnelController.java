@@ -63,5 +63,23 @@ public class PersonnelController {
     }
 
 
+    @GetMapping("/{login}/{pwd}")
+    public Boolean LoginPersonnels(@PathVariable String login, @PathVariable String pwd)
+    {
+        Personnel u = personnelRepository.findByLogin(login);
+        if (u.getPassword().equals(pwd)) { return true;}
+        else {return false;}
+    }
+
+    @PostMapping("/login")
+    public String register(@RequestBody Personnel personnel ){
+        Personnel user= personnelRepository.findByLogin(personnel.getLogin());
+        if(personnel.getPassword().equals(user.getPassword())){
+            return "Success";
+        }
+        return "saved successfullly";
+    }
+
+
 
 }
