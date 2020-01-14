@@ -40,6 +40,7 @@ public class ProjetController {
 
     @PostMapping("/register")
     public String register(@RequestBody Projet projet){
+
         projetRepository.save(projet);
         return "saved successfullly";
     }
@@ -109,7 +110,7 @@ public class ProjetController {
     @GetMapping("/valider/{id}")
     public List<Projet> ValiderProjet(@PathVariable Long id){
         Projet projet = projetRepository.getById(id);
-        projet.setStatut("Valide");
+        projet.setStatut("done");
         projetRepository.save(projet);
         return projetRepository.findAll();
     }
