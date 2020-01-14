@@ -5,6 +5,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 public class Projet  implements Serializable {
@@ -19,6 +20,9 @@ public class Projet  implements Serializable {
 
     @ManyToOne
     private Personnel chef;
+
+    @OneToMany(cascade = CascadeType.REMOVE, mappedBy = "projet")
+    private List<Phase> phases;
 
 
 

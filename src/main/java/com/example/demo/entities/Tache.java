@@ -15,8 +15,6 @@ public class Tache implements Serializable {
     private Date delai;
     private String Statut;
 
-
-
     @ManyToOne
     private Phase phase;
 

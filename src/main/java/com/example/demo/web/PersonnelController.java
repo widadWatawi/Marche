@@ -71,14 +71,15 @@ public class PersonnelController {
         else {return false;}
     }
 
-    @PostMapping("/login")
-    public String register(@RequestBody Personnel personnel ){
-        Personnel user= personnelRepository.findByLogin(personnel.getLogin());
-        if(personnel.getPassword().equals(user.getPassword())){
-            return "Success";
-        }
-        return "saved successfullly";
+    @GetMapping("/{login}")
+    public Personnel GetUserConnecte(@PathVariable String login){
+        Personnel u = personnelRepository.findByLogin(login);
+        return  u;
+
     }
+
+
+
 
 
 
